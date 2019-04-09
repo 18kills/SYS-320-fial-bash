@@ -1,9 +1,25 @@
 #!/bin/bash
 #Author: Richard T Swierk
 
+listProc(){
+
+}
+
+listServ(){
+
+}
+
+listSoft(){
+
+}
+
+listUsers(){
+
+}
+
 sysAdmin(){
         clear
-        echo "==================== Main Menu ===================="
+        echo "==================== System Admin Menu ===================="
         echo "   To select an option enter the options number    "
         echo "1: List all running processes"
         echo "2: List all running services"
@@ -28,9 +44,21 @@ sysAdmin(){
         fi
 }
 
+logs(){
+
+}
+
+printFile(){
+
+}
+
+process(){
+
+}
+
 secAdmin(){
         clear
-        echo "==================== Main Menu ===================="
+        echo "==================== Security Admin Menu ===================="
         echo "   To select an option enter the options number    "
         echo "1: List last 10 logged in users"
         echo "2: Print the last 20 lines of an arbitrary file in the /var/log/ directory"
@@ -43,11 +71,11 @@ secAdmin(){
         if [ $selection == 1 ];then
                 logs
         elif [ $selection == 2 ];then
-                listServ
+                printFile
         elif [ $selection == 3 ];then
-                listSoft
+                netstat -apn --inet
         elif [ $selection == 4 ];then
-                listUsers
+                process
         elif [ $selection == 5 ];then
                 mainMenu
         elif [ $selection == 6 ];then
