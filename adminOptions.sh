@@ -2,11 +2,12 @@
 #Author: Richard T Swierk
 
 listProc(){
-
+        ps all | less
+        sysAdmin
 }
 
 listServ(){
-
+        service --status-all | grep +
 }
 
 listSoft(){
