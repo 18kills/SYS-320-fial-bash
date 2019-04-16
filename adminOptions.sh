@@ -99,3 +99,4 @@ mainMenu(){
 		"3") exit;;
 		*);;
 	esac
+mainMenu
