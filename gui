@@ -15,13 +15,13 @@ sysAdmin(){
 	#Case statement to figure out which option the user picked
 	case "$selection" in
 		#Lists all running processes
-		"1") clear; ps -aux | less;;
+		"1") yad --text="$(ps -aux)";;
 		#Lists all running services
-		"2") clear; service --status-all | grep + | less;;
+		"2") yad --text="$(service --status-all | grep +)";;
 		#Lists all installed software
-		"3") clear; dpkg -l | less;;
+		"3") yad --text="$(dpkg -l)";;
 		#Lists all users
-		"4") clear; awk -F':' '{print $1",",$3",",$4",",$6",",$7}' /etc/passwd | less;;
+		"4") yad --text="$(awk -F':' '{print $1",",$3",",$4",",$6",",$7}' /etc/passwd)";;
 		#Returns user to the main menu
 		"5") clear; mainMenu;;
 		#Exits the program
@@ -43,25 +43,21 @@ secAdmin(){
 	#Case statement to figure out which option the user picked
 	case "$selection" in
 		#Lists last 10 logged in users
-		"1") clear; last -n 10 | less;;
+		"1") yad --text="$(last -n 10)";;
 		#Prints the last 20 lines of a user difined file
 		"2")
-			clear
-			ls -p /var/log/ | grep -v /
-			echo -n "Enter the name of the file: "
-			read file
-			clear
-			head -10 /var/log/$file | less;;
+			logFiles=$(ls -p /var/log/ | grep -v /)
+			yad --text="$logFiles"
+			file='yad --text="Enter the name of the file" --entry'
+			logfile=$(head -10 /var/log/$file)
+			yad --text="$logfile";;
 		#Runs the command netstat -apn --inet
-		"3") clear; netstat -apn --inet | less;;
+		"3") yad --text="$(netstat -apn --inet)";;
 		#Uses lsof to print the details of a specific process or process ID provided by the user
 		"4")
-			clear
-			ps -aux
-			echo -n "Enter of the PID of the process: "
-			read pid
-			clear
-			lsof -p $pid | less;;
+			yad --text="$(ps -aux)"
+			pid='yad --text="Enter of the PID of the process" --entry'
+			yad --text="$(lsof -p $pid)";;
 		#Returns user to the main menu
 		"5") mainMenu;;
 		#exits the program
