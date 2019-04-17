@@ -1,20 +1,26 @@
 #!/bin/bash
 
+listProc(){
+	yad --title="Running Processes" --text="$(ps -aux)" --button="Return to menu":1
+	sysAdmin()
+}
+
 #Function for the System Admin Menu
 sysAdmin(){
 	#Makes the gui for the System Admin menu
-	yad --title="System Admin Menu" --form --width=250 --text="Pick and option:" \
-        --field="List all running processes":fbtn "1" \
-        - field="List all running services":fbtn "2" \
-        --field="List all installed software":fbtn "3" \
-        --field="List all users":fbtn "4" \
-        --field="Return to main menu":fbtn "5" \
+	yad --title="System Admin Menu" --text="Pick and option:" \
+        --button="List all running processes":1\
+        --button="List all running services":2\
+        --button="List all installed software":3\
+        --button="List all users":4\
+        --button="Return to main menu":5\
+	--button="Exit":6
 	selection=$?
 	
 	#Case statement to figure out which option the user picked
 	case "$selection" in
 		#Lists all running processes
-		"1") yad --title="Running Processes" --text="$(ps -aux)";;
+		"1") listProc;;
 		#Lists all running services
 		"2") yad --text="$(service --status-all | grep +)";;
 		#Lists all installed software
@@ -36,7 +42,8 @@ secAdmin(){
         - field="Print the last 20 lines of an arbitrary file in the /var/log/ directory":fbtn "2" \
         --field="Run the command: netstat -apn --inet":fbtn "3" \
         --field="Use lsof to print the details of a specific process or process ID provided by the user":fbtn "4" \
-        --field="Return to main menu":fbtn "5"
+        --field="Return to main menu":fbtn "5" \
+	--field="Exit":fbtn "6"
 	selection=$?
 	#Case statement to figure out which option the user picked
 	case "$selection" in
