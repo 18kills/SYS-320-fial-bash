@@ -3,7 +3,7 @@
 #Function for the System Admin Menu
 sysAdmin(){
 	#Makes the gui for the System Admin menu
-	yad --form --width=250 --text="System Admin Menu:" \
+	yad --title="System Admin Menu" --form --width=250 --text="Pick and option:" \
         --field="List all running processes":fbtn "2" \
         - field="List all running services":fbtn "3" \
         --field="List all installed software":fbtn "4" \
@@ -32,7 +32,7 @@ sysAdmin(){
 #Function for the Security Admin Menu
 secAdmin(){
 	#Makes the gui for the Security Admin Menu
-        yad --form --width=250 --text="Security Admin Menu" \
+        yad --title="Security Admin Menu" --form --width=250 --text="Pick an option" \
         --field="List last 10 logged in users":fbtn "2" \
         - field="Print the last 20 lines of an arbitrary file in the /var/log/ directory":fbtn "3" \
         --field="Run the command: netstat -apn --inet":fbtn "4" \
@@ -68,7 +68,7 @@ secAdmin(){
 #Function for Main Menu 
 mainMenu(){
 	#Makes the gui for the Main Menu
-        yad --text="Main menu:"\
+        yad --Title="Main Menu" --text="Select an option:"\
         --button="System Admin":1\
         --button="Security Admin":2\
         --button="Exit":3
