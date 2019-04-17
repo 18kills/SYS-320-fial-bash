@@ -4,12 +4,11 @@
 sysAdmin(){
 	#Makes the gui for the System Admin menu
 	yad --title="System Admin Menu" --form --width=250 --text="Pick and option:" \
-        --field="List all running processes":fbtn "2" \
-        - field="List all running services":fbtn "3" \
-        --field="List all installed software":fbtn "4" \
-        --field="List all users":fbtn "5" \
-        --field="Return to main menu":fbtn "6" \
-        --button=gtk-cancel:1
+        --field="List all running processes":fbtn "1" \
+        - field="List all running services":fbtn "2" \
+        --field="List all installed software":fbtn "3" \
+        --field="List all users":fbtn "4" \
+        --field="Return to main menu":fbtn "5" \
 	selection=$?
 	
 	#Case statement to figure out which option the user picked
@@ -23,7 +22,7 @@ sysAdmin(){
 		#Lists all users
 		"4") yad --text="$(awk -F':' '{print $1",",$3",",$4",",$6",",$7}' /etc/passwd)";;
 		#Returns user to the main menu
-		"5") clear; mainMenu;;
+		"5") mainMenu;;
 		#Exits the program
 		"6") exit;;
 		*);;
@@ -33,12 +32,11 @@ sysAdmin(){
 secAdmin(){
 	#Makes the gui for the Security Admin Menu
         yad --title="Security Admin Menu" --form --width=250 --text="Pick an option" \
-        --field="List last 10 logged in users":fbtn "2" \
-        - field="Print the last 20 lines of an arbitrary file in the /var/log/ directory":fbtn "3" \
-        --field="Run the command: netstat -apn --inet":fbtn "4" \
-        --field="Use lsof to print the details of a specific process or process ID provided by the user":fbtn "5" \
-        --field="Return to main menu":fbtn "6" \
-        --button=gtk-cancel:1
+        --field="List last 10 logged in users":fbtn "1" \
+        - field="Print the last 20 lines of an arbitrary file in the /var/log/ directory":fbtn "2" \
+        --field="Run the command: netstat -apn --inet":fbtn "3" \
+        --field="Use lsof to print the details of a specific process or process ID provided by the user":fbtn "4" \
+        --field="Return to main menu":fbtn "5"
 	selection=$?
 	#Case statement to figure out which option the user picked
 	case "$selection" in
