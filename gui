@@ -85,4 +85,4 @@ mainMenu(){
 		*);;
         esac
 }
-msinMenu
+mainMenu
