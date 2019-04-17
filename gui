@@ -72,8 +72,9 @@ mainMenu(){
         --button="System Admin":1\
         --button="Security Admin":2\
         --button="Exit":3
-
-        options=$?
+	#this variable captures what button the user clicks
+	options=$?
+	#A case statement to send the user to where they selected
         case "$options" in
 		#Sends the user to the System Admin Menu
 		"1") sysAdmin;;
@@ -84,3 +85,4 @@ mainMenu(){
 		*);;
         esac
 }
+msinMenu
