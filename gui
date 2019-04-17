@@ -15,7 +15,7 @@ sysAdmin(){
 	#Case statement to figure out which option the user picked
 	case "$selection" in
 		#Lists all running processes
-		"1") yad --text="$(ps -aux)";;
+		"1") yad --title="Running Processes" --text="$(ps -aux)";;
 		#Lists all running services
 		"2") yad --text="$(service --status-all | grep +)";;
 		#Lists all installed software
