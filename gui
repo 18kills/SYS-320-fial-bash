@@ -1,21 +1,17 @@
 #!/bin/bash
 
-
 #Function for the System Admin Menu
 sysAdmin(){
-	clear
-	#prints out the options for the menu to the screen
-	echo "==================== System Admin Menu ===================="
-	echo "        To select an option enter the options number       "
-	echo "1: List all running processes"
-	echo "2: List all running services"
-	echo "3: List all installed software"
-	echo "4: List all users"
-	echo "5: Return to main menu"
-	echo "6: Exit"
-	echo -n "Make a selection: "
-	#reads what the user inputs and sends it to the variable selection
-	read selection
+	#Makes the gui for the System Admin menu
+	yad --form --width=250 --text="System Admin Menu:" \
+        --field="List all running processes":fbtn "2" \
+        - field="List all running services":fbtn "3" \
+        --field="List all installed software":fbtn "4" \
+        --field="List all users":fbtn "5" \
+        --field="Return to main menu":fbtn "6" \
+        --button=gtk-cancel:1
+	selection=$?
+	
 	#Case statement to figure out which option the user picked
 	case "$selection" in
 		#Lists all running processes
@@ -35,15 +31,15 @@ sysAdmin(){
 }
 #Function for the Security Admin Menu
 secAdmin(){
-        yad --form --width=250 --text="Security:" \
+	#Makes the gui for the Security Admin Menu
+        yad --form --width=250 --text="Security Admin Menu" \
         --field="List last 10 logged in users":fbtn "2" \
         - field="Print the last 20 lines of an arbitrary file in the /var/log/ directory":fbtn "3" \
         --field="Run the command: netstat -apn --inet":fbtn "4" \
         --field="Use lsof to print the details of a specific process or process ID provided by the user":fbtn "5" \
         --field="Return to main menu":fbtn "6" \
         --button=gtk-cancel:1
-	echo: Exit"
-	
+	selection=$?
 	#Case statement to figure out which option the user picked
 	case "$selection" in
 		#Lists last 10 logged in users
@@ -75,6 +71,7 @@ secAdmin(){
 }
 #Function for Main Menu 
 mainMenu(){
+	#Makes the gui for the Main Menu
         yad --text="Main menu:"\
         --button="System Admin":1\
         --button="Security Admin":2\
