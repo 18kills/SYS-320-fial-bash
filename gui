@@ -22,7 +22,7 @@ listUser(){
 #Function for the System Admin Menu
 sysAdmin(){
 	#Makes the gui for the System Admin menu
-	yad --title="System Admin Menu" --text="Pick and option:" \
+	yad --title="System Admin Menu" --form --width=250 --text="Pick and option:" \
         --button="List all running processes":1\
         --button="List all running services":2\
         --button="List all installed software":3\
@@ -73,13 +73,13 @@ printInfo(){
 #Function for the Security Admin Menu
 secAdmin(){
 	#Makes the gui for the Security Admin Menu
-        yad --title="Security Admin Menu" --form --width=250 --text="Pick an option" \
-        --field="List last 10 logged in users":fbtn "1" \
-        - field="Print the last 20 lines of an arbitrary file in the /var/log/ directory":fbtn "2" \
-        --field="Run the command: netstat -apn --inet":fbtn "3" \
-        --field="Use lsof to print the details of a specific process or process ID provided by the user":fbtn "4" \
-        --field="Return to main menu":fbtn "5" \
-	--field="Exit":fbtn "6"
+        yad --title="Security Admin Menu" --text="Pick an option" \
+        --button="List last 10 logged in users":1\
+        --button="Print the last 20 lines of an arbitrary file in the /var/log/ directory":2\
+        --button="Run the command: netstat -apn --inet":3\
+        --button="Use lsof to print the details of a specific process or process ID provided by the user":4\
+        --button="Return to main menu":5\
+	--button="Exit":6
 	selection=$?
 	#Case statement to figure out which option the user picked
 	case "$selection" in
